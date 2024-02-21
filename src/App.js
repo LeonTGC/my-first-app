@@ -1,6 +1,9 @@
 import { useState } from "react"
 import Person from "./Person"
 import BbcSection from "./BbcSection"
+
+import Counter from "./Counter"
+
 const App = () => {
   // persons is the value
   // setPersons is the function to update persons
@@ -36,6 +39,7 @@ const App = () => {
           />
         })}
       </div>
+      <Counter />
     </div>
   )
 }
