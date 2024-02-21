@@ -1,29 +1,43 @@
-import f1 from './images/f1.jpg'
-import ben from './images/benstokes.jpg'
-import city from './images/city.jpg'
-import tuchel from './images/tuchel.jpg'
-import './BbcStyles.css'
+import { useState } from "react"
+import Person from "./Person"
+import BbcSection from "./BbcSection"
 const App = () => {
+  // persons is the value
+  // setPersons is the function to update persons
+
+  const [persons, setPersons] = useState([
+    { name: 'Dave', age: 33 },
+    { name: 'Karen', age: 45 },
+    { name: 'Steve', age: 40 },
+  ])
+
+  const handleClick = (index) => {
+    // ... spread operator
+    // copy the state array so we can change it
+    let arr = [...persons]
+    // changed the copied array
+    arr.splice(index, 1)
+    // update state with our new changed array
+    setPersons(arr)
+  }
+
   return (
-    <div className='collection'>
-      <Card img={f1} title="F1 Testing" category="Formula 1"/>
-      <Card img={ben} title="Ben Stokes injured" category="Cricket"/>
-      <Card img={city} title="Haaland scores again" category="Football"/>
-      <Card img={tuchel} title="Tuchel to leave at the end of the season" category="Football"/>
+    <div>
+      <div>
+        <h1>my react project</h1>
+        {/* persons is the array we are iterating through */}
+        {/* person is the parameter to access each individual item */}
+        {persons.map((person, index) => {
+          return <Person 
+          key={index} 
+          name={person.name} 
+          age={person.age}
+          handleClick={() => handleClick(index)}
+          />
+        })}
+      </div>
     </div>
   )
 }
 
-const Card = (props) => {
-  return (
-    <div className='card'>
-      <img src={props.img} />
-      <h2>{props.title}</h2>
-      <p>{props.category}</p>
-    </div>
-  )
-}
 export default App
-
-
-
