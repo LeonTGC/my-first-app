@@ -1,0 +1,17 @@
+.collection {
+    border: solid red 3px;
+    display: flex;
+    width: 80vw;
+}
+.card {
+    border: green solid 3px;
+    width: 25%;
+}
+
+img {
+    width: 80%;
+}
+
+p {
+    color: rgb(43, 221, 67);
+}
